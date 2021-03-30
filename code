@@ -1,0 +1,39 @@
+import pandas as pd
+df=pd.read_csv(“USA_Housing.csv”)
+df.head()
+df.isnull().sum()
+df.describe()
+df.info()
+x=df.iloc[:,:-2]
+x
+y=df.iloc[:,:-2]
+y
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=20)
+x_train.shape
+x_test.shapefrom sklearn.neighbors import KNeighborsRegressor
+from sklearn import metrics
+r2=[]
+for i in range(1,30):
+knn=kNeighborsRegressor(n_neighbors=i)
+knn.fit(x_train,y_train)
+y_pred=knn.predict(x_test)
+ r2_score=metrics.r2_score(y_test,y_pred)
+ r2.append(r2_score)
+print(r2)
+from matplotlib import pyplot as plt
+%matplotlib inline
+plt.plot(range(1,30),r2)
+plt.xlabel(“k value”)
+plt.ylabel(“r2”)
+plt.title(“R squared error vs k”)
+knn=kNeighborsRegressor()
+knn.fit(x_train,y_train)
+y_pred=knn.predict(x_test)
+y_pred
+r2=metrics.r2_score(y_test,y_pred)
+r2
+y_test=knn.predict([[99545.45857,9.682861,3.009188,9.09,93086.80050]])
+y_test
+import numpy as np
+np.sqrt(4)
